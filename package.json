@@ -1,6 +1,6 @@
 {
-  "name": "express_example",
-  "version": "0.0.1",
+  "name": "dopamine",
+  "version": "0.0.3",
   "private": true,
   "scripts": {
     "start": "node app.js"
