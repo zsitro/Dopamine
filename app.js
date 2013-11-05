@@ -17,18 +17,6 @@ var
 
 		build: {
 			folder: "public"
-		},
-
-		pagetitles: {
-			index: 'Home',
-			about: 'About',
-			professionals: 'Professionels',
-			products: 'Products page',
-			marque: 'Marque subpage',
-			faq: 'FAQ',
-			gallery: 'Gallery',
-			beforeafter: 'Gallery - Before & After',
-			contact: 'Contact'
 		}
 	};
 
@@ -47,7 +35,7 @@ var
 		app.set('view engine', 'jade');
 		app.locals.pretty = true;
 		app.locals.indentChar = "\t";
-		app.use(express.favicon());
+		//app.use(express.favicon());
 		app.use(express.logger('dev'));
 		app.use(express.bodyParser());
 		app.use(express.methodOverride());
@@ -102,7 +90,7 @@ var
 
 	/* SERVE STATIC FILES
 	 ********************************************************************************/
-	var staticFiles = "js,css,jpg,png,woff,eot,ttf,svg".split(",");
+	var staticFiles = "js,css,jpg,png,ico,woff,eot,ttf,svg".split(",");
 	var staticFilesRoute = "*." + staticFiles.join("|*.");
 
 	app.get('/:var(' + staticFilesRoute + ')?', function (req, res) {
