@@ -107,10 +107,15 @@ var
 		console.log("Requested html file: " + filename, req.params);
 
 		res.render(filename, {
-			title: project.pagetitles[filename] || '(o,o) No title'
+			//title: project.pagetitles[filename] || '(o,o) No title'
 		}, function (err, html) {
-			saveOutput(html, filename);
-			res.send(html);
+			if (err) {
+				console.log(err);
+				res.send("<pre>"+err.toString()+"</pre>");
+			} else {
+				saveOutput(html, filename);
+				res.send(html);
+			}
 		});
 
 	});

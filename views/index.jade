@@ -1,8 +1,10 @@
 extends layout
 
 block subpage_data
-	- var dp = {}
-	- dp.page = { title: "Home" }
+	//- var dp = { page: {} }
+	- dp.page.title = "Home"
+	- dp.page.slug = "home"
+	- dp.page.class = "page-home l-default l-home"
 
 
 block subpage_styles
