@@ -13,41 +13,71 @@
 
 
 
-/* `Clear Floated Elements
+/* Clear Floated Elements
 ----------------------------------------------------------------------------------------------------*/
 
 /* http://sonspring.com/journal/clearing-floats */
 
 .clear {
-  clear: both;
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
 }
 
 /* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
 
 .clearfix:before,
 .clearfix:after {
-  content: '\0020';
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
+	content: '\0020';
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
 }
 
 .clearfix:after {
-  clear: both;
+	clear: both;
 }
 
 /*
-  The following zoom:1 rule is specifically for IE6 + IE7.
-  Move to separate stylesheet if invalid CSS is a problem.
+	The following zoom:1 rule is specifically for IE6 + IE7.
+	Move to separate stylesheet if invalid CSS is a problem.
 */
 
 .clearfix {
-  zoom: 1;
+	zoom: 1;
+}
+
+
+uppercase()
+	text-transform uppercase
+
+capitalize()
+	text-transform capitalize
+
+normalcase()
+	text-transform none
+
+normal()
+	font-style normal
+
+italic()
+	font-style italic
+
+inlineblock()
+	display inline-block
+	zoom 1
+	*display inline
+
+pseudo-block()
+	display block
+	content ""
+	position relative
+
+pie(){
+	behavior: url('css/PIE/PIE.htc');
 }

@@ -16,6 +16,10 @@ var
 	stylus = require('stylus'),
 	app = express(),
 
+	/* Experimental
+	coffee = require('coffee-script'),
+	compress = require('node-jade-compress'), */
+
 	// Project settings
 	project = {
 		build: {
@@ -27,9 +31,14 @@ app.configure(function () {
 	app.set('port', process.env.PORT || 3000);
 	app.set('views', __dirname + '/views');
 	app.set('view engine', 'jade');
+	/* Experimental
+	compress.init({
+		app: app,
+		js_dir: 'scripts',
+		js_url: '/js'
+	});*/
 	app.locals.pretty = true;
 	app.locals.indentChar = "\t";
-	//app.use(express.favicon());
 	app.use(express.logger('dev'));
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
@@ -77,7 +86,17 @@ app.get('/*.html', function (req, res) {
 	console.log("Requested html file: " + filename, req.params);
 
 	res.render(filename, {
-		dp : { page: {} }
+		dp : {
+			settings: {
+				supports: {
+					ie: true
+				}
+			},
+			page: {},
+			project: {
+				name: "Dopamine" // TODO: Move to external settings file
+			}
+		}
 	}, function (err, html) {
 		if (err) {
 			console.log(err);

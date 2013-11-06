@@ -1,23 +1,24 @@
 //- IMPORTS
 block subpage_data
+include dopamine/head
+include dopamine/snippets
 
 //- LAYOUT
 !!! 5
-html
+html(class='no-js')
 	head
-		// META
-		meta(charset='utf-8')
-		meta(name='viewport',content='width=device-width, initial-scale=1.0')
 
-		title= dp.page.title + ' | ' + 'Dopamine'
+		+dp_head_meta_charset()
+		+dp_head_meta_chromeframe()
+		+dp_head_title(dp.page.title, dp.project.name)
+		+dp_head_meta_description(dp.page.description)
+		+dp_head_meta_viewport()
 
-		// FAVICONS
-		link(rel='shortcut icon',href='images/favicon.ico',type='image/x-icon')
-		link(rel='apple-touch-icon',href='images/apple-touch-icon.png')
+		//- Comment out if you have these files in site's root folder
+		+dp_head_favicon('ico','images/favicons/favicon.ico')
+		+dp_head_favicon('apple-touch-icon-precomposed','images/favicons/apple-touch-icon.png', '152x152')
+		+dp_head_favicon('ms-application','images/favicons/apple-touch-icon.png', '#FFFFFF')
 
-
-		//if lt IE 9
-			script(src='js/vendor/html5shiv.js')
 
 		// CSS - Please do not touch main.css as it is a compiled file
 		link(rel='stylesheet', href='css/main.css')
@@ -26,6 +27,8 @@ html
 		block subpage_styles
 
 	body(class=dp.page.class)
+
+		+dp_snippets_oldies()
 
 		h1 [CONTENT]
 		// PAGE-CONTENT -------------------------
