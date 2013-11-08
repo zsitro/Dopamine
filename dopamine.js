@@ -1,5 +1,5 @@
 /*
- * Dopamine
+ * Dopamine.js
  * Author: Gabor Zsoter
  * http://zsitro.com
  * Version: 0.0.3

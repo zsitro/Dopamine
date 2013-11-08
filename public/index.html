@@ -12,6 +12,7 @@
     <meta name="msapplication-TileImage" content="images/favicons/apple-touch-icon.png"/>
     <!-- CSS - Please do not touch main.css as it is a compiled file-->
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr.min.js"></script>
     <!-- CSS - Subpage specific styles-->
   </head>
   <body class="page-home l-default l-home"><!--[if lt IE 8]>
@@ -29,4 +30,13 @@
   <!-- General scripts-->
   <script src="js/vendor/jquery.min.js"></script>
   <!-- Subpage specific scripts-->
+  <!-- Google Analytics-->
+  <script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='//www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-XXXX-X');ga('send','pageview');
+  </script>
 </html>

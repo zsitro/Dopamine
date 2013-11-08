@@ -21,8 +21,8 @@ mixin dp_head_meta_description(_content)
 //- ------------------------------------------------
 //- <TITLE>
 //- ------------------------------------------------
-mixin dp_head_title(page_title, suffix)
-	title= page_title + ' | ' + suffix
+mixin dp_head_title(_page_title, _suffix)
+	title= _page_title + ' | ' + _suffix
 	//- TODO: examine suffix
 
 //- ------------------------------------------------
@@ -77,28 +77,19 @@ mixin dp_head_meta_viewport()
 
 //- ------------------------------------------------
 
-mixin dp_head_favicon(type, url, opt1)
-	case type
+mixin dp_head_favicon(_type, _url, _opt1)
+	case _type
 		when 'ico'
-			link(rel='shortcut icon', href=url, type='image/x-icon')
+			link(rel='shortcut icon', href=_url, type='image/x-icon')
 
 		when 'apple-touch-icon-precomposed'
-			- if (opt1){
-				link(rel='apple-touch-icon-precomposed', href=url, sizes=opt1)
+			- if (_opt1){
+				link(rel='apple-touch-icon-precomposed', href=_url, sizes=_opt1)
 			- } else {
-				link(rel='apple-touch-icon-precomposed', href=url)
+				link(rel='apple-touch-icon-precomposed', href=_url)
 			- }
 
 		when 'ms-application'
-			meta(name='msapplication-TileColor',content=opt1)
-			meta(name='msapplication-TileImage',content=url)
-
-
-//- ------------------------------------------------
-//- HEAD - HTML5 Shiv
-//- You can use this if you don't want a shiny Modernizr
-//- ------------------------------------------------
-mixin html5shiv()
-	//if lt IE 9
-		script(src='js/vendor/html5shiv.js')
+			meta(name='msapplication-TileColor',content=_opt1)
+			meta(name='msapplication-TileImage',content=_url)
 

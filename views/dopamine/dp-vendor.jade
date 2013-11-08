@@ -1,0 +1,15 @@
+//- ------------------------------------------------
+//- FORCE CHROME FRAME - HTTP-EQUIV
+//- ------------------------------------------------
+mixin dp_vendor(_framework)
+	case _framework
+		when 'modernizr'
+			script(src='js/vendor/modernizr.min.js')
+
+		//- ------------------------------------------------
+		//- HTML5 Shiv
+		//- You can use this if you don't want a shiny Modernizr
+		//- https://github.com/aFarkas/html5shiv
+		//- ------------------------------------------------
+		when 'html5shiv'
+			script(src='js/vendor/html5shiv.js')

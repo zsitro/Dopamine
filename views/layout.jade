@@ -1,7 +1,8 @@
 //- IMPORTS
 block subpage_data
-include dopamine/head
-include dopamine/snippets
+include dopamine/dp-head
+include dopamine/dp-snippets-inline
+include dopamine/dp-vendor
 
 //- LAYOUT
 !!! 5
@@ -22,6 +23,8 @@ html(class='no-js')
 
 		// CSS - Please do not touch main.css as it is a compiled file
 		link(rel='stylesheet', href='css/main.css')
+
+		+dp_vendor('modernizr')
 
 		// CSS - Subpage specific styles
 		block subpage_styles
@@ -47,4 +50,6 @@ html(class='no-js')
 
 	// Subpage specific scripts
 	block subpage_scripts
+
+	+dp_snippets_google_analytics('UA-XXXX-X')
 
