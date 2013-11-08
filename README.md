@@ -54,8 +54,8 @@ __Version 0.0.2__
 
 ### Head
 
-#### dp_head_meta_charset([_charset])
 <a name="dp_head_meta_charset" />
+#### dp_head_meta_charset([_charset])
 
 __Arguments__
 
@@ -71,8 +71,8 @@ __Arguments__
 <meta charset="utf-8"/>
 ```
 
-#### dp_head_meta_chromeframe()
 <a name="dp_head_meta_chromeframe" />
+#### dp_head_meta_chromeframe()
 
 __Arguments__
 
@@ -88,8 +88,8 @@ __Arguments__
 ```
 
 
-#### dp_head_meta_description(_content)
 <a name="dp_head_meta_description" />
+#### dp_head_meta_description(_content)
 
 __Arguments__
 
@@ -109,8 +109,8 @@ __Arguments__
 <meta name="description" content="VALUE_OF_dp.page.description"/>
 ```
 
-#### dp_head_title(_page_title [, _suffix])
 <a name="dp_head_title" />
+#### dp_head_title(_page_title [, _suffix])
 
 __Arguments__
 
@@ -132,8 +132,8 @@ __Arguments__
 ```
 
 
-#### dp_head_meta_viewport(_page_title [, _suffix])
 <a name="dp_head_meta_viewport" />
+#### dp_head_meta_viewport(_page_title [, _suffix])
 
 __Arguments__
 
@@ -147,8 +147,8 @@ __Arguments__
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 ```
 
-#### dp_head_favicon(_type, _url [, opt1])
 <a name="dp_head_favicon" />
+#### dp_head_favicon(_type, _url [, opt1])
 
 __Arguments__
 
@@ -187,8 +187,8 @@ __Arguments__
 
 ### Vendor
 
-#### dp_vendor(_framework [, _version])
 <a name="dp_vendor" />
+#### dp_vendor(_framework [, _version])
 
 __Arguments__
 
