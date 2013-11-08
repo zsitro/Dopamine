@@ -59,7 +59,7 @@ __Version 0.0.2__
 
 __Arguments__
 
-* _charset - optional, defaults to `utf-8`
+* `_charset` - optional, defaults to `utf-8`
 	currently supports only HTML5 output
 
 ##### Examples
@@ -77,7 +77,7 @@ __Arguments__
 
 __Arguments__
 
-* none
+* `none`
 
 ##### Examples
 ```html
@@ -95,7 +95,7 @@ __Arguments__
 
 __Arguments__
 
-* _content - string, containing the description of the page, can be effective with `This is the awesome description of the page`
+* `_content` - string, containing the description of the page, can be effective with `This is the awesome description of the page`
 
 ##### Examples
 ```html
@@ -117,8 +117,8 @@ __Arguments__
 
 __Arguments__
 
-* _page_title - string
-* _suffix - common suffix (not very sophisticated, but usable)
+* `_page_title` - string
+* `_suffix` - common suffix (not very sophisticated, but usable)
 
 ##### Examples
 ```html
@@ -141,7 +141,7 @@ __Arguments__
 
 __Arguments__
 
-* none - needs to be extended
+* `none` - needs to be extended
 
 ##### Examples
 ```html
@@ -157,13 +157,13 @@ __Arguments__
 
 __Arguments__
 
-* _type - mantadory, currently supported:
+* `_type` - mantadory, currently supported:
 	* ico
 	* apple-touch-icon-precomposed
 	* ms-application
 
-* _url - mandatory, path to favicon file
-* _opt1 - optional, can be a HEX color code for ms-application or value of `sizes` when generating apple-touch-icon-precomposed output *(see examples below)*
+* `_url` - mandatory, path to favicon file
+* `_opt1` - optional, can be a HEX color code for ms-application or value of `sizes` when generating apple-touch-icon-precomposed output *(see examples below)*
 
 ##### Examples
 ```html
@@ -198,11 +198,11 @@ __Arguments__
 
 __Arguments__
 
-* _framework - alias from the following list
+* `_framework` - alias from the following list
 	* modernizr
 	* jquery
 	* html5shiv
-* _version - optional only takes effect on some cases
+* `_version` - optional only takes effect on some cases
  *  1.10 - at jquery
 
 ##### Examples
