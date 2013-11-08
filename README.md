@@ -1,7 +1,7 @@
 Dopamine
 ========
 
-Come back later, really!!
+__Come back later, really!!__
 
 #Changelog
 
@@ -18,8 +18,6 @@ __Version 0.0.2__
  - Added favicon markup @ header
  - Added class support for subpages' body element
 
-
-
 #TODO
  - Add example module: Menu with active states
  - Add language definitions
@@ -32,10 +30,11 @@ __Version 0.0.2__
 - https://github.com/h5bp/html5-boilerplate/blob/master/index.html
 - http://demo.pattern-lab.info/
 
+---------------------------------------
 
-## Dopamine Documentation
+# Dopamine Documentation
 
-### Dopamine Jade Snippets
+## Dopamine Jade Snippets
 
 #### Head
 
@@ -49,6 +48,7 @@ __Version 0.0.2__
 
 * [dp_vendor](#dp_vendor)
 
+---------------------------------------
 
 ## Dopamine Jade Snippets
 
@@ -70,6 +70,7 @@ __Arguments__
 // Compiles to:
 <meta charset="utf-8"/>
 ```
+---------------------------------------
 
 #### dp_head_meta_chromeframe()
 <a name="dp_head_meta_chromeframe" />
@@ -86,6 +87,7 @@ __Arguments__
 // Compiles to:
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 ```
+---------------------------------------
 
 
 #### dp_head_meta_description(_content)
@@ -108,6 +110,7 @@ __Arguments__
 // Compiles to:
 <meta name="description" content="VALUE_OF_dp.page.description"/>
 ```
+---------------------------------------
 
 #### dp_head_title(_page_title [, _suffix])
 <a name="dp_head_title" />
@@ -131,6 +134,7 @@ __Arguments__
 <title>Home | Dopamine</title>
 ```
 
+---------------------------------------
 
 #### dp_head_meta_viewport(_page_title [, _suffix])
 <a name="dp_head_meta_viewport" />
@@ -146,6 +150,7 @@ __Arguments__
 // Compiles to:
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 ```
+---------------------------------------
 
 #### dp_head_favicon(_type, _url [, opt1])
 <a name="dp_head_favicon" />
@@ -182,6 +187,7 @@ __Arguments__
 
 ```
 
+---------------------------------------
 
 
 
@@ -213,4 +219,5 @@ __Arguments__
 // Compiles to:
 <script src="js/vendor/jquery/2.x/jquery.min.js"></script>
 ```
+---------------------------------------
 
