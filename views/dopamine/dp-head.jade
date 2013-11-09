@@ -13,10 +13,22 @@ mixin dp_head_meta_chromeframe
 	meta(http-equiv='X-UA-Compatible',content='IE=edge')
 
 //- ------------------------------------------------
+//- Author - HUMANS.TXT
+//- ------------------------------------------------
+mixin dp_head_author
+	link(type='text/plain',rel='author',href='humans.txt')
+
+//- ------------------------------------------------
 //- META - Description
 //- ------------------------------------------------
 mixin dp_head_meta_description(_content)
 	meta(name='description',content=_content)
+
+//- ------------------------------------------------
+//- META - Keywords
+//- ------------------------------------------------
+mixin dp_head_meta_keywords(_csv)
+	meta(name='keywords',content=_csv)
 
 //- ------------------------------------------------
 //- <TITLE>

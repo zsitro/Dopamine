@@ -2,9 +2,22 @@
 //- Old IEs warning
 //- http://jsbin.com/eMoliPa/latest/edit
 //- ------------------------------------------------
-mixin dp_snippets_oldies()
-	//if lt IE 8
-		p(class='m-dopamine m-dopamine-oldies') You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+mixin dp_snippets_oldies(_lt, _message, _class)
+	- var _lt = _lt || 8
+	- var _message = _message || 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.'
+	- var _class = _class || 'm-dopamine m-dopamine-oldies'
+	case _lt
+		when 9
+			//if lt IE 9
+				p(class=_class)!= _message
+
+		when 8
+			//if lt IE 8
+				p(class=_class)!= _message
+
+		when 7
+			//if lt IE 7
+				p(class=_class)!= _message
 
 
 mixin dp_snippets_google_analytics(_UA)

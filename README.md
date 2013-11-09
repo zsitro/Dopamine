@@ -6,7 +6,7 @@ __Come back later, really!!__
 #Changelog
 
 __Version 0.0.3__
- - Introduced Dopamine snippets
+ - Introduced Dopamine Jade snippets
  - Added PIE beta 2.0
  - Added demo content to stylus files
  - Moved dp global variable definition from jade files to app.js
@@ -40,9 +40,17 @@ __Version 0.0.2__
 
 * [dp_head_meta_charset](#dp_head_meta_charset)
 * [dp_head_meta_chromeframe](#dp_head_meta_chromeframe)
+* [dp_head_title](#dp_head_title)
+* [dp_head_meta_keywords](#dp_head_meta_keywords)
 * [dp_head_meta_description](#dp_head_meta_description)
 * [dp_head_meta_viewport](#dp_head_meta_viewport)
 * [dp_head_favicon](#dp_head_favicon)
+* [dp_head_author](#dp_head_author)
+
+#### Snippets - Inline
+
+* [dp_snippets_oldies](#dp_snippets_oldies)
+* [dp_snippets_google_analytics](#dp_snippets_google_analytics)
 
 #### Vendor
 
@@ -90,28 +98,6 @@ __Arguments__
 ---------------------------------------
 
 
-<a name="dp_head_meta_description" />
-#### dp_head_meta_description(_content)
-
-__Arguments__
-
-* `_content` - string, containing the description of the page, can be effective with `dp.page.description` 
-
-##### Examples
-```html
-+dp_head_meta_description("This is the awesome description of the page")
-
-// Compiles to:
-<meta name="description" content="This is the awesome description of the page"/>
-```
-```html
-+dp_head_meta_description(dp.page.description)
-
-// Compiles to:
-<meta name="description" content="VALUE_OF_dp.page.description"/>
-```
----------------------------------------
-
 <a name="dp_head_title" />
 #### dp_head_title(_page_title [, _suffix])
 
@@ -135,6 +121,52 @@ __Arguments__
 ```
 
 ---------------------------------------
+
+<a name="dp_head_meta_description" />
+#### dp_head_meta_description(_content)
+
+__Arguments__
+
+* `_content` - string, containing the description of the page, can be effective with `dp.page.description`
+
+##### Examples
+```html
++dp_head_meta_description("This is the awesome description of the page")
+
+// Compiles to:
+<meta name="description" content="This is the awesome description of the page"/>
+```
+```html
++dp_head_meta_description(dp.page.description)
+
+// Compiles to:
+<meta name="description" content="VALUE_OF_dp.page.description"/>
+```
+---------------------------------------
+
+
+<a name="dp_head_meta_keywords" />
+#### dp_head_meta_keywords(_cvs)
+
+__Arguments__
+
+* `_csv` - string, containing the keywords of the page, can be effective with `dp.page.keywords`
+
+##### Examples
+```html
++dp_head_meta_keywords("dopamine,sitebuild,jade,stylus")
+
+// Compiles to:
+<meta name="keywords" content="dopamine,sitebuild,jade,stylus"/>
+```
+```html
++dp_head_meta_description(dp.page.keywords)
+
+// Compiles to:
+<meta name="keywords" content="VALUE_OF_dp.page.keywords"/>
+```
+---------------------------------------
+
 
 <a name="dp_head_meta_viewport" />
 #### dp_head_meta_viewport(_page_title [, _suffix])
@@ -186,8 +218,60 @@ __Arguments__
 <meta name="msapplication-TileImage" content="images/favicons/apple-touch-icon.png"/>
 
 ```
-
 ---------------------------------------
+
+<a name="dp_head_author" />
+#### dp_head_author(_page_title [, _suffix])
+
+__Arguments__
+
+* `none` - needs to be extended to auto-generate humans.txt file based on project parameters
+
+##### Examples
+```html
++dp_head_author()
+
+// Compiles to:
+<link type="text/plain" rel="author" href="humans.txt" />
+```
+---------------------------------------
+
+
+### Snippets - Inline
+
+<a name="dp_snippets_oldies" />
+#### dp_snippets_oldies([_lt, _message, _class])
+
+__Arguments__
+
+* `_lt` - Defaults to: `8`, input value for `<!--[if lt IE 8]>`
+	* 7
+	* 8
+	* 9
+* `_message` - Defaults to: `You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.`
+* `_class` - Defaults to: `m-dopamine m-dopamine-oldies`
+
+##### Examples
+```html
++dp_snippets_oldies()
+
+// Compiles to:
+<!--[if lt IE 8]>
+    <p class="m-dopamine m-dopamine-oldies">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+```
+
+```html
++dp_snippets_oldies(9, 'No good man!', 'my-oldies-warning-classname')
+
+// Compiles to:
+<!--[if lt IE 9]>
+    <p class="my-oldies-warning-classname">No good man!</p>
+<![endif]-->
+```
+---------------------------------------
+
+
 
 
 
