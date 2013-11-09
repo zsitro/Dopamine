@@ -95,14 +95,14 @@ __Arguments__
 
 __Arguments__
 
-* `_content` - string, containing the description of the page, can be effective with `This is the awesome description of the page`
+* `_content` - string, containing the description of the page, can be effective with `dp.page.description` 
 
 ##### Examples
 ```html
 +dp_head_meta_description("This is the awesome description of the page")
 
 // Compiles to:
-<meta name="description" content=""/>
+<meta name="description" content="This is the awesome description of the page"/>
 ```
 ```html
 +dp_head_meta_description(dp.page.description)
