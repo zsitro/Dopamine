@@ -36,6 +36,9 @@ __Version 0.0.2__
 
 ## Dopamine Jade Snippets
 
+#### Document
+* [dp_doc](#dp_doc)
+
 #### Head
 
 * [dp_head_meta_charset](#dp_head_meta_charset)
@@ -59,6 +62,44 @@ __Version 0.0.2__
 ---------------------------------------
 
 ## Dopamine Jade Snippets
+
+### Document
+<a name="dp_doc" />
+#### dp_doc(_type [,_lang])
+
+__Arguments__
+
+* `_type` - optional, defaults to `html5` currently supports only HTML5 output
+* `_lang` - optional, defaults to `en-US`
+
+##### Examples
+```html
++dp_doc()
++dp_doc('html5', 'en-US')
+
+// Compiles to:
+<html lang="en-US">
+```
+```html
++dp_doc('html5-modernizr', 'hu-HU')
+
+// Compiles to:
+<!DOCTYPE html><!--[if lt IE 7]><html lang="hu-HU" prefix="og: http://ogp.me/ns#" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html lang="hu-HU" prefix="og: http://ogp.me/ns#" class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html lang="hu-HU" prefix="og: http://ogp.me/ns#" class="no-js lt-ie9" data-placeholder-focus="false"><![endif]-->
+<!--[if gt IE 8]><!--> <html lang="hu-HU" prefix="og: http://ogp.me/ns#" class="no-js"><!--<![endif]-->
+
+```
+
+```html
++dp_doc('html5-modernizr-noie')
+
+// Compiles to:
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+```
+
+---------------------------------------
 
 ### Head
 
