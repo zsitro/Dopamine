@@ -49,11 +49,17 @@ __Version 0.0.2__
 * [dp_head_meta_viewport](#dp_head_meta_viewport)
 * [dp_head_favicon](#dp_head_favicon)
 * [dp_head_author](#dp_head_author)
+* dph_alternate
+* dph_canonical
+* dph_next
+* dph_pingback
 
 #### Snippets - Inline
 
-* [dp_snippets_oldies](#dp_snippets_oldies)
-* [dp_snippets_google_analytics](#dp_snippets_google_analytics)
+* [dpsn_oldies](#dpsn_oldies)
+* [dpsn_google_analytics](#dpsn_google_analytics)
+* dpsn_google_site_verification
+* dpsn_anchor
 
 #### Vendor
 
@@ -65,7 +71,7 @@ __Version 0.0.2__
 
 ### Document
 <a name="dp_doc" />
-#### dp_doc(_type [,_lang])
+#### dp_doc( _type [,_lang])
 
 __Arguments__
 
@@ -280,8 +286,8 @@ __Arguments__
 
 ### Snippets - Inline
 
-<a name="dp_snippets_oldies" />
-#### dp_snippets_oldies([_lt, _message, _class])
+<a name="dpsn_oldies" />
+#### dpsn_oldies([_lt, _message, _class])
 
 __Arguments__
 
@@ -294,7 +300,7 @@ __Arguments__
 
 ##### Examples
 ```html
-+dp_snippets_oldies()
++dpsn_oldies()
 
 // Compiles to:
 <!--[if lt IE 8]>
@@ -303,7 +309,7 @@ __Arguments__
 ```
 
 ```html
-+dp_snippets_oldies(9, 'No good man!', 'my-oldies-warning-classname')
++dpsn_oldies(9, 'No good man!', 'my-oldies-warning-classname')
 
 // Compiles to:
 <!--[if lt IE 9]>

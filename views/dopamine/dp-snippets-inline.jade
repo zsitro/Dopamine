@@ -2,7 +2,7 @@
 //- Old IEs warning
 //- http://jsbin.com/eMoliPa/latest/edit
 //- ------------------------------------------------
-mixin dp_snippets_oldies(_lt, _message, _class)
+mixin dpsn_oldies(_lt, _message, _class)
 	- var _lt = _lt || 8
 	- var _message = _message || 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.'
 	- var _class = _class || 'm-dopamine m-dopamine-oldies'
@@ -20,7 +20,7 @@ mixin dp_snippets_oldies(_lt, _message, _class)
 				p(class=_class)!= _message
 
 
-mixin dp_snippets_google_analytics(_UA)
+mixin dpsn_google_analytics(_UA)
 	// Google Analytics
 	script
 		(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
