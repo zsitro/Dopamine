@@ -1,0 +1,1 @@
+stylus -w -c main.styl -o w:/integrated_project_path/assets/css

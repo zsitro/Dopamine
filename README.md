@@ -53,6 +53,8 @@ __Version 0.0.2__
 * dph_canonical
 * dph_next
 * dph_pingback
+* dph_prefetch
+* dph_rss
 
 #### Snippets - Inline
 
@@ -60,6 +62,9 @@ __Version 0.0.2__
 * [dpsn_google_analytics](#dpsn_google_analytics)
 * dpsn_google_site_verification
 * dpsn_anchor
+* dpsn_ES5-shim
+	`<!--[if lt IE 9]><script type="text/javascript" src="http://www.rga.com/wp-content/themes/rga/library/js/libs/es5-shim.min.js"></script><![endif]-->`
+* dpsn_html_ul - mimic ul > li with given js array `dpsn_html_ul(['List item 1', 'List item 2', ...])`
 
 #### Vendor
 
