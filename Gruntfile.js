@@ -1,75 +1,85 @@
-module.exports = function(grunt) {
+/*
+ * zsitro/Dopamine
+ * https://github.com/zsitro/Dopamine
+ *
+ * Copyright (c) 2013 Gabor Zsoter
+ * Licensed under the MIT license.
+ */
 
-// configure the tasks
-grunt.initConfig({
+'use strict';
 
-	copy: {
-		build: {
-			cwd: 'source',
-			src: [ '**', '!**/*.styl', '!**/*.jade', '!**/*.jade'],
-			dest: 'build',
-			expand: true
-		}
-	},
+module.exports = function (grunt) {
 
-	clean: {
-		build: {
-			src: [ 'build' ]
-		}//,
-		//stylesheets: {
-		//	src: [ 'build/**/*.css', '!build/main.css' ]
-		//},
-		//scripts: {
-		//	src: [ 'build/**/*.js', '!build/main.js' ]
-		//}
-	},
+    // configure the tasks
+    grunt.initConfig({
 
-	stylus: {
-		build: {
-			options: {
-				linenos: false,
-				compress: false
-			},
-			files: [{
-				expand: true,
-				cwd: 'source/app/stylus',
+        copy: {
+            build: {
+                cwd: 'source',
+                src: ['**', '!**/*.styl', '!**/*.jade', '!**/*.jade'],
+                dest: 'build',
+                expand: true
+            }
+        },
 
-				src: [ 'main.styl'],
-				dest: 'build/app/css',
-				ext: '.css'
-			}]
-		}
-	},
+        clean: {
+            build: {
+                src: ['build']
+            } //,
+            //stylesheets: {
+            //	src: [ 'build/**/*.css', '!build/main.css' ]
+            //},
+            //scripts: {
+            //	src: [ 'build/**/*.js', '!build/main.js' ]
+            //}
+        },
 
-	jade: {
-		compile:{
-			options:{
-				client: false,
-				pretty: true,
-				data: {
-						dp : {
-							settings: {
-								supports: {
-									ie: true
-								}
-							},
-							page: {},
-							project: {
-								name: "Dopamine" // TODO: Move to external settings file
-							}
-						}
-					
-				}
-			},
-			files:[{
-				cwd: "source/app/views",
-				src: ["**/*.jade", '!**/_*.jade', '!**/dp-*.jade'],
-				dest: "build",
-				expand: true,
-				ext: ".html"
-			}]
-		}
-		/*build: {
+        stylus: {
+            build: {
+                options: {
+                    linenos: false,
+                    compress: false
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'source/app/stylus',
+
+                    src: ['main.styl'],
+                    dest: 'build/app/css',
+                    ext: '.css'
+                }]
+            }
+        },
+
+        jade: {
+            compile: {
+                options: {
+                    client: false,
+                    pretty: true,
+                    data: {
+                        dp: {
+                            settings: {
+                                supports: {
+                                    ie: true
+                                }
+                            },
+                            page: {},
+                            project: {
+                                name: "Dopamine" // TODO: Move to external settings file
+                            }
+                        }
+
+                    }
+                },
+                files: [{
+                    cwd: "source/app/views",
+                    src: ["**/*.jade", '!**/_*.jade', '!**/dp-*.jade'],
+                    dest: "build",
+                    expand: true,
+                    ext: ".html"
+                }]
+            }
+            /*build: {
 			options: {
 				data: function(dest, src) {
 					return {
@@ -79,122 +89,147 @@ grunt.initConfig({
 				}
 			}
 		}*/
-	},
+        },
 
-	//autoprefixer: {
-	//	build: {
-	//		expand: true,
-	//		cwd: 'build',
-	//		src: [ '**/*.css' ],
-	//		dest: 'build'
-	//	}
-	//},
+        prettify: {
+            options: {
+                indent: 1,
+                indent_char: '	',
+                wrap_line_length: 0,
+                preserve_newlines: true,
+                brace_style: 'expand',
+                max_preserve_newlines: 2,
+                //padcomments: true,
+                unformatted: ['a', 'sub', 'sup', 'b', 'i', 'u', 'pre']
+            },
+            // Prettify a directory of files
+            all: {
+                expand: true,
+                cwd: 'build/',
+                ext: '.html',
+                src: ['*.html'],
+                dest: 'build/pretty/'
+            }
 
-	//cssmin: {
-	//	build: {
-	//		files: {
-	//			'build/main.css': [ 'build/main.css' ]
-	//		}
-	//	}
-	//},
+            // Or the "compact" src-dest format
+            /* one: {
+    src: 'test/actual/ugly/index.html',
+    dest: 'test/actual/pretty/index.html'
+  }*/
+        },
 
-	//coffee: {
-	//	build: {
-	//		expand: true,
-	//		cwd: 'source',
-	//		src: [ '**/*.coffee' ],
-	//		dest: 'build',
-	//		ext: '.js'
-	//	}
-	//},
+        //autoprefixer: {
+        //	build: {
+        //		expand: true,
+        //		cwd: 'build',
+        //		src: [ '**/*.css' ],
+        //		dest: 'build'
+        //	}
+        //},
 
-	//uglify: {
-	//	build: {
-	//		options: {
-	//			mangle: false
-	//		},
-	//		files: {
-	//			'build/main.js': [ 'build/main.js' ]
-	//		}
-	//	}
-	//},
+        //cssmin: {
+        //	build: {
+        //		files: {
+        //			'build/main.css': [ 'build/main.css' ]
+        //		}
+        //	}
+        //},
 
-	watch: {
-		stylesheets: {
-			files: 'source/app/stylus/**/*.styl',
-			tasks: [ 'stylesheets' ]
-		}//,
-	//	scripts: {
-	//		files: 'source/**/*.coffee',
-	//		tasks: [ 'scripts' ]
-	//	},
-	//	jade: {
-	//		files: 'source/**/*.jade',
-	//		tasks: [ 'jade' ]
-	//	},
-	//	copy: {
-	//		files: [ 'source/**', '!source/**/*.styl', '!source/**/*.coffee', '!source/**/*.jade' ],
-	//		tasks: [ 'copy' ]
-	//	}
-	},
+        //coffee: {
+        //	build: {
+        //		expand: true,
+        //		cwd: 'source',
+        //		src: [ '**/*.coffee' ],
+        //		dest: 'build',
+        //		ext: '.js'
+        //	}
+        //},
 
-	connect: {
-		server: {
-			options: {
-				port: 4000,
-				base: 'build',
-				hostname: '*'
-			}
-		}
-	}
+        //uglify: {
+        //	build: {
+        //		options: {
+        //			mangle: false
+        //		},
+        //		files: {
+        //			'build/main.js': [ 'build/main.js' ]
+        //		}
+        //	}
+        //},
 
-});
+        watch: {
+            stylesheets: {
+                files: 'source/app/stylus/**/*.styl',
+                tasks: ['stylesheets']
+            } //,
+            //	scripts: {
+            //		files: 'source/**/*.coffee',
+            //		tasks: [ 'scripts' ]
+            //	},
+            //	jade: {
+            //		files: 'source/**/*.jade',
+            //		tasks: [ 'jade' ]
+            //	},
+            //	copy: {
+            //		files: [ 'source/**', '!source/**/*.styl', '!source/**/*.coffee', '!source/**/*.jade' ],
+            //		tasks: [ 'copy' ]
+            //	}
+        },
 
-// load the tasks
-grunt.loadNpmTasks('grunt-contrib-copy');
-grunt.loadNpmTasks('grunt-contrib-clean');
-grunt.loadNpmTasks('grunt-contrib-stylus');
-//grunt.loadNpmTasks('grunt-contrib-cssmin');
-//grunt.loadNpmTasks('grunt-autoprefixer');
-//grunt.loadNpmTasks('grunt-contrib-coffee');
-//grunt.loadNpmTasks('grunt-contrib-uglify');
-grunt.loadNpmTasks('grunt-contrib-watch');
-grunt.loadNpmTasks('grunt-contrib-jade');
-grunt.loadNpmTasks('grunt-contrib-connect');
+        connect: {
+            server: {
+                options: {
+                    port: 4000,
+                    base: 'build',
+                    hostname: '*'
+                }
+            }
+        }
+
+    });
+
+    // load the tasks
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-stylus');
+    //grunt.loadNpmTasks('grunt-contrib-cssmin');
+    //grunt.loadNpmTasks('grunt-autoprefixer');
+    //grunt.loadNpmTasks('grunt-contrib-coffee');
+    //grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    //grunt.loadNpmTasks('grunt-indent');
+    grunt.loadNpmTasks('grunt-prettify');
+    grunt.loadNpmTasks('grunt-contrib-jade');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
 
-// define the tasks
+    // define the tasks
 
-grunt.registerTask(
-	'stylesheets',
-	'Compiles the stylesheets.',
-	['stylus' /*,'autoprefixer' ,'cssmin','clean:stylesheets'*/]
-	);
+    grunt.registerTask(
+        'stylesheets',
+        'Compiles the stylesheets.', ['stylus' /*,'autoprefixer' ,'cssmin','clean:stylesheets'*/ ]
+    );
 
 
-grunt.registerTask(
-	'markup',
-	'Compiles jade.',
-	['jade' /*,'autoprefixer' ,'cssmin','clean:stylesheets'*/]
-	);
+    grunt.registerTask(
+        'markup',
+        'Compiles jade.', ['jade' /*,'autoprefixer' ,'cssmin','clean:stylesheets'*/ ]
+    );
 
-//grunt.registerTask(
-//	'scripts',
-//	'Compiles the JavaScript files.',
-//	['coffee', 'uglify', 'clean:scripts']
-//	);
+    //grunt.registerTask(
+    //	'scripts',
+    //	'Compiles the JavaScript files.',
+    //	['coffee', 'uglify', 'clean:scripts']
+    //	);
 
-grunt.registerTask(
-	'build',
-	'Compiles all of the assets and copies the files to the build directory.',
-	[ 'clean', 'copy', 'stylesheets', 'markup'/*, 'scripts'*/]
-	);
+    grunt.registerTask(
+        'build',
+        'Compiles all of the assets and copies the files to the build directory.', ['clean', 'copy', 'stylesheets', 'markup' /*, 'scripts'*/ ]
+    );
 
-grunt.registerTask(
-	'default',
-	'Watches the project for changes, automatically builds them and runs a server.',
-	[ 'build', 'connect', 'watch' ]
-	);
+    grunt.registerTask(
+        'default',
+        'Watches the project for changes, automatically builds them and runs a server.', ['build', 'connect', 'watch']
+    );
 
 
 };

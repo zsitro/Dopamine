@@ -1,0 +1,9 @@
+{
+  "indent": 8,
+  "condense": true,
+  "indent_inner_html": true,
+  "unformatted": [
+    "a",
+    "pre"
+  ]
+}
