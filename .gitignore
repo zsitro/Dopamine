@@ -1,2 +1,6 @@
 node_modules
-#public/*.html
+.Spotlight-V100
+.Trashes
+.DS_Store
+.AppleDouble
+.LSOverride
