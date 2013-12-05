@@ -5,6 +5,13 @@ __Come back later, really!!__
 
 #Changelog
 
+__Version 0.1.0__
+ - Grunt integration
+ - Prettify html output with grunt-prettify
+ - Separated source and build files
+ - Solved ugly html output from jade
+ - removed framework's main file Dopamine.js
+
 __Version 0.0.3__
  - Introduced Dopamine Jade snippets
  - Added PIE beta 2.0
@@ -23,7 +30,8 @@ __Version 0.0.2__
  - Add language definitions
  - Add parameter: vendor script's path
  - Add parameter: support IE true/false
- - Wiki: how to switch to tabs indentation in generated output ( https://github.com/visionmedia/jade/pull/1231 )
+ - inbuilt Nib support for Jade
+ - Add SASS support
 
 # Resources, inspiration
 - http://jade-lang.com/reference/
