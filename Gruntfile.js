@@ -51,6 +51,15 @@ module.exports = function (grunt) {
             }
         },
 
+        sass: {
+            dev :{
+                files: {
+                    'build/app/css/main.css': 'source/app/sass/main.scss'
+                }    
+            }
+            
+        },
+
         jade: {
             compile: {
                 options: {
@@ -99,7 +108,6 @@ module.exports = function (grunt) {
                 preserve_newlines: true,
                 brace_style: 'expand',
                 max_preserve_newlines: 2,
-                //padcomments: true,
                 unformatted: ['a', 'sub', 'sup', 'b', 'i', 'u', 'pre']
             },
             // Prettify a directory of files
@@ -108,14 +116,8 @@ module.exports = function (grunt) {
                 cwd: 'build/',
                 ext: '.html',
                 src: ['*.html'],
-                dest: 'build/pretty/'
+                dest: 'build/'
             }
-
-            // Or the "compact" src-dest format
-            /* one: {
-    src: 'test/actual/ugly/index.html',
-    dest: 'test/actual/pretty/index.html'
-  }*/
         },
 
         //autoprefixer: {
@@ -160,19 +162,23 @@ module.exports = function (grunt) {
             stylesheets: {
                 files: 'source/app/stylus/**/*.styl',
                 tasks: ['stylesheets']
-            } //,
+            },
+            sass: {
+                files: ['source/app/sass/**/*.{scss,sass}'],
+                tasks: ['sass:dev']
+            },
             //	scripts: {
             //		files: 'source/**/*.coffee',
             //		tasks: [ 'scripts' ]
             //	},
-            //	jade: {
-            //		files: 'source/**/*.jade',
-            //		tasks: [ 'jade' ]
-            //	},
-            //	copy: {
-            //		files: [ 'source/**', '!source/**/*.styl', '!source/**/*.coffee', '!source/**/*.jade' ],
-            //		tasks: [ 'copy' ]
-            //	}
+            jade: {
+                files: 'source/app/views/**/*.jade',
+                tasks: [ 'markup' ]
+            }//,
+            //copy: {
+            //    files: [ 'source/**', '!source/**/*.styl', '!source/**/*.coffee', '!source/**/*.jade' ],
+            //    tasks: [ 'copy' ]
+            //}
         },
 
         connect: {
@@ -200,19 +206,23 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-prettify');
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-sass');
 
 
     // define the tasks
 
     grunt.registerTask(
         'stylesheets',
-        'Compiles the stylesheets.', ['stylus' /*,'autoprefixer' ,'cssmin','clean:stylesheets'*/ ]
+        'Compiles the stylesheets.', [
+        //'stylus'
+        'sass:dev'
+         /*,'autoprefixer' ,'cssmin','clean:stylesheets'*/ ]
     );
 
 
     grunt.registerTask(
         'markup',
-        'Compiles jade.', ['jade' /*,'autoprefixer' ,'cssmin','clean:stylesheets'*/ ]
+        'Compiles jade.', ['jade', 'prettify' /*,'autoprefixer' ,'cssmin','clean:stylesheets'*/ ]
     );
 
     //grunt.registerTask(
@@ -223,12 +233,17 @@ module.exports = function (grunt) {
 
     grunt.registerTask(
         'build',
-        'Compiles all of the assets and copies the files to the build directory.', ['clean', 'copy', 'stylesheets', 'markup' /*, 'scripts'*/ ]
+        'Compiles all of the assets and copies the files to the build directory.', [
+        'clean', 'copy', 'stylesheets', 'markup' /*, 'scripts'*/ ]
     );
 
     grunt.registerTask(
         'default',
-        'Watches the project for changes, automatically builds them and runs a server.', ['build', 'connect', 'watch']
+        'Watches the project for changes, automatically builds them and runs a server.', [
+        'build', 
+        'connect', 
+        'watch'
+        ]
     );
 
 
