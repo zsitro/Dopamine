@@ -1,4 +1,34 @@
+
+// Reset
+//@import "extensions/reset";
+
+// Mixins
+@import "mixins/dopamine.scss";
+
+// Base
+@import "base/variables";
+@import "base/helpers";
+@import "base/icons";
+@import "base/fonts";
+
+
+// Grid
+//@import "extensions/grid-semantic";
+
+// Modules
+@import "modules/header";
+@import "modules/footer";
+@import "modules/m-button";
+@import "modules/m-menu-main";
+
+
 // Pages
-//@import "pages/global";
-//@import "pages/static";
-@import "pages/home";
+@import "pages/common";
+@import "pages/404";
+@import "pages/index";
+//@import "pages/contact";
+
+
+*{
+	outline: 0px solid red;
+}

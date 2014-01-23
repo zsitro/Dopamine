@@ -1,0 +1,34 @@
+@include font-face(fontello, "../fonts/fontello/font/fontello");
+
+.fontH1{
+	font: normal 16px/20px $fontDefault;
+	color: $color_H1;
+	text-transform: uppercase;
+}
+
+
+.fontH2{
+	font: normal 16px/20px $fontDefault;
+	color: $color_H2;
+	text-transform: uppercase;
+}
+
+
+.fontp{
+	font: normal 16px/20px $fontDefault;
+	color: $color_p;
+	text-transform: none;
+}
+
+
+.fontp1{
+	font: normal 16px/20px $fontDefault;
+	color: $color_p;
+	text-transform: none;
+}
+
+.fontB{
+	font: normal 22px/25px $fontDefault;
+	color: $color_p;
+	text-transform: uppercase;
+}

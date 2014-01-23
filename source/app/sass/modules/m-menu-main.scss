@@ -1,0 +1,25 @@
+.m-menu-main{
+	text-align: center;
+
+	margin: 110px 0 0px;
+
+	@media (max-width: 450px) {
+		//margin: 0px 0 0px;
+	}
+
+}
+
+.lt-ie9{
+	.m-menu-main{
+		//margin-bottom: 30px;
+	}
+}
+
+
+
+
+
+
+
+
+

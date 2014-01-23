@@ -50,12 +50,10 @@ body(class=dp.page.class)
 		h1 [FOOTER]
 
 
-// General scripts
-block scripts
-	script(src="js/vendor/jquery.min.js")
-
-// Subpage specific scripts
+// All scripts included via require.js
 block subpage_scripts
+	script(data-main='build/app/scripts/app',src='vendor/require.js')
+
 
 +dpsn_google_analytics('UA-XXXX-X')
 

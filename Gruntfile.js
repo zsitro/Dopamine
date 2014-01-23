@@ -12,43 +12,57 @@ module.exports = function (grunt) {
 
     // configure the tasks
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
 
         copy: {
             build: {
                 cwd: 'source',
-                src: ['**', '!**/*.styl', '!**/*.jade', '!**/*.jade'],
+                src: ['**', '!**/*.{styl,jade,sass,scss}'],
                 dest: 'build',
                 expand: true
-            }
+            },
+            images: {
+                cwd: 'source/app/images',
+                src: ['**/*.{jpg,png,gif,ico}'],
+                dest: 'build/app/images',
+                expand: true
+            },
+            scripts: {
+                cwd: 'source/app/scripts',
+                src: ['**/*.js'],
+                dest: 'build/app/scripts',
+                expand: true
+            },
+            dist: {
+                cwd: 'build',
+                src: ['**'],
+                dest: 'dist',
+                expand: true
+            } 
         },
 
         clean: {
-            build: {
-                src: ['build']
-            } //,
-            //stylesheets: {
-            //	src: [ 'build/**/*.css', '!build/main.css' ]
-            //},
-            //scripts: {
-            //	src: [ 'build/**/*.js', '!build/main.js' ]
-            //}
-        },
-
-        stylus: {
-            build: {
-                options: {
-                    linenos: false,
-                    compress: false
-                },
-                files: [{
-                    expand: true,
-                    cwd: 'source/app/stylus',
-
-                    src: ['main.styl'],
-                    dest: 'build/app/css',
-                    ext: '.css'
-                }]
-            }
+            init: {
+                src: ['build/**/*']
+            },
+            dist: {
+                src: ['dist/**/*.*']
+            },
+            // dist: {
+            //  src: ['dist']
+            // },
+            stylesheets: {
+              src: [ 'build/app/sass', 'build/app/stylus' ]
+            },
+            markup: {
+              src: [ 'build/app/views', 'build/app/views' ]
+            },            
+            scripts: {
+              src: [ 'build/app/scripts___' ]
+            },
+            htmlRemoveAll: {
+              src: [ 'dist/**/*.html' ]
+            },
         },
 
         sass: {
@@ -74,7 +88,7 @@ module.exports = function (grunt) {
                             },
                             page: {},
                             project: {
-                                name: "Dopamine" // TODO: Move to external settings file
+                                name: "PROJECTNAME" // TODO: Move to external settings file
                             }
                         }
 
@@ -83,166 +97,279 @@ module.exports = function (grunt) {
                 files: [{
                     cwd: "source/app/views",
                     src: ["**/*.jade", '!**/_*.jade', '!**/dp-*.jade'],
-                    dest: "build",
+                    dest: "",
                     expand: true,
                     ext: ".html"
                 }]
             }
-            /*build: {
-			options: {
-				data: function(dest, src) {
-					return {
-						from: '',
-						to: dest
-					};
-				}
-			}
-		}*/
         },
 
         prettify: {
             options: {
                 indent: 1,
-                indent_char: '	',
+                indent_char: '  ',
                 wrap_line_length: 0,
                 preserve_newlines: true,
+                padcomments: true,
                 brace_style: 'expand',
                 max_preserve_newlines: 2,
-                unformatted: ['a', 'sub', 'sup', 'b', 'i', 'u', 'pre']
+                unformatted: ['pre']
             },
             // Prettify a directory of files
             all: {
                 expand: true,
-                cwd: 'build/',
+                cwd: '',
                 ext: '.html',
                 src: ['*.html'],
-                dest: 'build/'
+                dest: ''
             }
         },
 
-        //autoprefixer: {
-        //	build: {
-        //		expand: true,
-        //		cwd: 'build',
-        //		src: [ '**/*.css' ],
-        //		dest: 'build'
-        //	}
-        //},
+        autoprefixer: {
+            browsers: ['last 2 version', 'ie 8'],
+            build: {
+                expand: true,
+                cwd: 'build/app/css',
+                src: [ '**/*.css' ],
+                dest: 'build/app/css'
+            }
+        },
 
-        //cssmin: {
-        //	build: {
-        //		files: {
-        //			'build/main.css': [ 'build/main.css' ]
-        //		}
-        //	}
-        //},
+        imagemin: {
+            dynamic: {
+                files: [{
+                    expand: true,
+                    cwd: 'dist/app/images/',
+                    src: ['**/*.{png,jpg,gif}'],
+                    dest: 'dist/app/images/'
+                }]
+            }
+        },
+
+        cssmin: {
+         build: {
+            options: {
+                banner: ''
+            },
+             files: {
+                 'build/app/css/main.css': [ 'build/app/css/main.css' ]
+             }
+         }
+        },
 
         //coffee: {
-        //	build: {
-        //		expand: true,
-        //		cwd: 'source',
-        //		src: [ '**/*.coffee' ],
-        //		dest: 'build',
-        //		ext: '.js'
-        //	}
+        //  build: {
+        //      expand: true,
+        //      cwd: 'source',
+        //      src: [ '**/*.coffee' ],
+        //      dest: 'build',
+        //      ext: '.js'
+        //  }
         //},
 
-        //uglify: {
-        //	build: {
-        //		options: {
-        //			mangle: false
-        //		},
-        //		files: {
-        //			'build/main.js': [ 'build/main.js' ]
-        //		}
-        //	}
-        //},
+        requirejs: {
+            // options: {
+            //  'appDir': 'temp',
+            //  'dir': 'dist',
+            //  'mainConfigFile': 'temp/app/scripts/app.js',
+            //  'optimize': 'uglify2',
+            //  'normalizeDirDefines': 'skip',
+            //  'skipDirOptimize': true,
+            // },
+            compile: {
+                options: {
+                    name: 'app',
+                    baseUrl: "dist/app/scripts",
+                    optimize: 'uglify2',
+                    mangle: false,
+                    mainConfigFile: "dist/app/scripts/app.js",
+                    out: "dist/app/scripts/app.min.js",
+                    preserveLicenseComments: true,
+
+                }
+            },
+            // shared: {
+            //  options: {
+            //      'modules': [{
+            //          'name': 'app',
+            //          'include': [
+            //              'jquery',
+            //              //'consoleShim',
+            //              //'externalLinks'
+            //          ],
+            //      },
+            //      {
+            //          'name': 'pages/contact/main',
+            //          'exclude': ['app']
+            //      },
+            //      ],
+            //  }
+            // },
+
+        },
+
+        compress: {
+            main: {
+                options: {
+                    archive: 'PROJECTNAME.sitebuild-'+'<%= grunt.template.today("dddd-mmmm-dS.yyyy.h.TT") %>'+'.zip'
+                },
+                files:[{
+                    expand: true,
+                    src: [
+                        '**/*',
+                        '!*.zip',
+                        '!node_modules/**', 
+                        '!vendor/bootstrap/**',
+                        'vendor/bootstrap/dist/css/bootstrap.min.css',
+                        ],
+                    dest: ''    
+                }]
+            },
+            // bootstrap: {
+            //     options: {
+            //         archive: 'PROJECTNAME.bootstrap.source-'+'<%= grunt.template.today("dddd-mmmm-dS.yyyy.h.TT") %>'+'.zip'
+            //     },
+            //     files:[{
+            //         expand: true,
+            //         src: [
+            //             'vendor/bootstrap/**/*.*',
+            //             ],
+            //         dest: ''                
+            //     }]
+            // },
+        },
 
         watch: {
-            stylesheets: {
-                files: 'source/app/stylus/**/*.styl',
-                tasks: ['stylesheets']
+
+            images: {
+                files: 'source/app/images/**/*.{jpg,png,gif}',
+                tasks: ['copy:images'],
+                options: {
+                    livereload: true
+                }
             },
+
             sass: {
                 files: ['source/app/sass/**/*.{scss,sass}'],
-                tasks: ['sass:dev']
+                tasks: ['stylesheets'],
+                options: {
+                    livereload: true
+                }
             },
-            //	scripts: {
-            //		files: 'source/**/*.coffee',
-            //		tasks: [ 'scripts' ]
-            //	},
+            scripts: {
+                files: 'source/**/*.js',
+                tasks: [
+                    //'copy:build'
+                    'scripts'
+                ],
+                options: {
+                    livereload: true
+                }
+            },
             jade: {
-                files: 'source/app/views/**/*.jade',
-                tasks: [ 'markup' ]
-            }//,
-            //copy: {
-            //    files: [ 'source/**', '!source/**/*.styl', '!source/**/*.coffee', '!source/**/*.jade' ],
-            //    tasks: [ 'copy' ]
-            //}
+                files: 'source/app/views/**',
+                tasks: [ 'markup' ],
+                options: {
+                    livereload: true
+                }
+            }
         },
 
         connect: {
             server: {
                 options: {
                     port: 4000,
-                    base: 'build',
+                    base: '',
                     hostname: '*'
                 }
             }
-        }
+        },
 
     });
+
+
 
     // load the tasks
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-stylus');
-    //grunt.loadNpmTasks('grunt-contrib-cssmin');
-    //grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-autoprefixer');
     //grunt.loadNpmTasks('grunt-contrib-coffee');
-    //grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    //grunt.loadNpmTasks('grunt-indent');
     grunt.loadNpmTasks('grunt-prettify');
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-sass');
-
-
-    // define the tasks
+    //grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-requirejs');
+    grunt.loadNpmTasks('grunt-contrib-compress');
 
     grunt.registerTask(
         'stylesheets',
         'Compiles the stylesheets.', [
         //'stylus'
-        'sass:dev'
-         /*,'autoprefixer' ,'cssmin','clean:stylesheets'*/ ]
+        'sass:dev',
+        'autoprefixer',
+        'clean:stylesheets'
+        ]
     );
-
 
     grunt.registerTask(
         'markup',
-        'Compiles jade.', ['jade', 'prettify' /*,'autoprefixer' ,'cssmin','clean:stylesheets'*/ ]
+        'Compiles jade.', [
+            'jade',
+            'prettify',
+            'clean:markup'
+        ]
     );
 
-    //grunt.registerTask(
-    //	'scripts',
-    //	'Compiles the JavaScript files.',
-    //	['coffee', 'uglify', 'clean:scripts']
-    //	);
+    grunt.registerTask(
+
+      'scripts',
+      'Compiles the JavaScript files.',
+      [
+        'copy:scripts',
+        //'coffee',
+        //'uglify', 
+        //was ok 'uglify:js',
+        //'clean:scripts'
+        ]
+      );
 
     grunt.registerTask(
         'build',
         'Compiles all of the assets and copies the files to the build directory.', [
-        'clean', 'copy', 'stylesheets', 'markup' /*, 'scripts'*/ ]
+        'clean:init',
+        'copy:build',
+        'copy:images',
+        'stylesheets',
+        'markup',
+        'scripts']
     );
 
     grunt.registerTask(
         'default',
         'Watches the project for changes, automatically builds them and runs a server.', [
         'build', 
-        'connect', 
+        'connect',
         'watch'
+        ]
+    );
+
+
+    grunt.registerTask(
+        'release',
+        'Makes a  production-ready release of the current content', [
+        'clean:dist',
+        'build',
+        'cssmin',
+        'copy:dist',
+        //'sprites',
+        //'imagemin',
+        'requirejs',
+        //'clean:temp',
+        //'clean:htmlRemoveAll'
         ]
     );
 

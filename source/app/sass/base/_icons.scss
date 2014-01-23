@@ -1,0 +1,44 @@
+.icon {
+	@include cross-browser-inline-block;
+
+	&:before{
+		padding-right: 25px;
+	}
+}
+
+
+.icon--16{
+	@extend .icon;
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	vertical-align: bottom;
+}
+
+.icon--after-text{
+	margin-left: 4px; 
+}
+
+.icon--before-text{
+	margin-right: 4px; 
+}
+
+// //  - 16
+// @include icon-face-a('.icon--pdf',			'icon_16_pdf');
+// @include icon-face-a('.icon--pdf-big',		'icon_16_pdf_big');
+// @include icon-face-a('.icon--arrow-right',	'icon_16_arrow_right');
+// @include icon-face-a('.icon--arrow-left', 	'icon_16_arrow_left');
+// @include icon-face-a('.icon--arrow-up', 		'icon_16_arrow_up');
+// @include icon-face-a('.icon--arrow-down', 	'icon_16_arrow_down');
+// @include icon-face-a('.icon--youtube', 		'icon_16_youtube');
+// @include icon-face-a('.icon--linkedin', 		'icon_16_linkedin');
+
+// @include icon-face('.icon--tel', 	'icon_16_tel');
+// @include icon-face('.icon--mail', 	'icon_16_mail');
+
+
+
+
+
+
+
