@@ -5,6 +5,11 @@ __Come back later, really!!__
 
 #Changelog
 
+__Version 0.2.0__
+ - Fully refactored directory structure
+ - working r.js compressor
+ - more helpers in SCSS
+
 __Version 0.1.0__
  - Grunt integration
  - Prettify html output with grunt-prettify
