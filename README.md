@@ -7,8 +7,9 @@ __Come back later, really!!__
 
 __Version 0.2.0__
  - Fully refactored directory structure
- - working r.js compressor
- - more helpers in SCSS
+ - Working r.js compressor
+ - More helpers in SCSS
+ - Added dp_vendor('bootstrap-css')
 
 __Version 0.1.0__
  - Grunt integration
