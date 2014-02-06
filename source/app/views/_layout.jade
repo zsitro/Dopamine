@@ -25,7 +25,7 @@ head
 
 	// CSS - Please do not touch main.css as it is a compiled file
 	//- dp_asset(css/main.css)
-	link(rel='stylesheet', href='app/css/main.css')
+	link(rel='stylesheet', href='build/app/css/main.css')
 
 	+dp_vendor('modernizr')
 
@@ -37,17 +37,22 @@ body(class=dp.page.class)
 	+dpsn_oldies()
 
 
+	.l-common__wrapper
+		.row
+			.col-md-12
+				|header here
 
+		.row
+			.col-md-12
+				// PAGE-CONTENT 
+				block content
+				// END OF PAGE-CONTENT 
 
-	h1 [CONTENT]
-	// PAGE-CONTENT 
-	block content
-	// END OF PAGE-CONTENT 
+		.row
+			.col-md-12
+				// FOOTER 
+				| Footer
 
-
-	// FOOTER 
-	footer
-		h1 [FOOTER]
 
 
 //- All scripts included via require.js

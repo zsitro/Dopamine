@@ -5,6 +5,12 @@ __Come back later, really!!__
 
 #Changelog
 
+__Version 0.2.0__
+ - Fully refactored directory structure
+ - Working r.js compressor
+ - More helpers in SCSS
+ - Added dp_vendor('bootstrap-css')
+
 __Version 0.1.0__
  - Grunt integration
  - Prettify html output with grunt-prettify
